@@ -1,19 +1,12 @@
 import React from "react";
 
-
 export class Read extends React.Component {
   state = {
     value: "read"
   };
 
-  updateValue(value) {
-    this.setState({
-      value: value
-    });
-  }
-
   render() {
-    console.log(this.state.value)
+    console.log(this.state.value);
     const { Books } = this.props;
     const readBooks = Books.filter(a => {
       return a.shelf === "read";

@@ -10,9 +10,7 @@ import { Route } from "react-router-dom";
 
 class BooksApp extends React.Component {
   state = {
-    Books: [],
-    shelf: "",
-    id: ""
+    Books: []
   };
 
   componentDidMount() {
@@ -24,15 +22,17 @@ class BooksApp extends React.Component {
   }
 
   updateShelf(book, shelf) {
-    BooksAPI.update(book, shelf).then(book, shelf => {
-      this.setState({
-        id: book,
-        shelf: shelf
-      });
-    });
+    BooksAPI.update(book, shelf).then(
+      BooksAPI.getAll().then(Books => {
+        this.setState({
+          Books
+        });
+      })
+    );
   }
 
   render() {
+    console.log(this.state.Books);
     return (
       <div className="app">
         <div className="list-books">

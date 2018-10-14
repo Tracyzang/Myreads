@@ -1,24 +1,15 @@
 import React from "react";
 
-
 export class Reading extends React.Component {
   state = {
     value: "currentlyReading"
   };
-
-  updateValue(value) {
-    this.setState({
-      value: value
-    });
-  }
 
   render() {
     const { Books, updateShelf } = this.props;
     const ReadingBooks = Books.filter(a => {
       return a.shelf === "currentlyReading";
     });
-
-
 
     return (
       <div className="bookshelf">
@@ -45,6 +36,7 @@ export class Reading extends React.Component {
                       value={this.state.value}
                       onChange={event => {
                         this.props.updateShelf(a.id, event.target.value);
+                        
                       }}
                     >
                       <option value="move" disabled>

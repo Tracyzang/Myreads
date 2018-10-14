@@ -6,11 +6,7 @@ export class WantToRead extends React.Component {
     value: "wantToRead"
   };
 
-  updateValue(value) {
-    this.setState({
-      value: value
-    });
-  }
+
 
   render() {
     const { Books } = this.props;
@@ -43,6 +39,7 @@ export class WantToRead extends React.Component {
                     value={this.state.value}
                     onChange={event => {
                       this.props.updateShelf(a.id, event.target.value);
+                    
                     }}
                   >
                     <option value="move" disabled>

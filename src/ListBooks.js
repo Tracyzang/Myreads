@@ -82,7 +82,9 @@ export class ListBooks extends React.Component {
                     style={{
                       width: 128,
                       height: 188,
-                      backgroundImage: `url(${a.imageLinks.thumbnail})`
+                      backgroundImage: `url(${a.imageLinks.thumbnail})|| url(${
+                        a.imageLinks.smallThumbnail
+                      })`
                     }}
                   />
                   <p className="book-title">{a.title}</p>
