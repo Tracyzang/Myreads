@@ -31,24 +31,27 @@ export class ListBooks extends React.Component {
   render() {
     const { existingBooks } = this.props;
     const { query, books } = this.state;
+    let showingBooks = [];
 
-    const showingBooks = books.filter(c => {
-      var cond1 = c.title
-        ? c.title.toLowerCase().includes(query.toLowerCase())
-        : false;
-      var cond2 = c.authors
-        ? c.authors
-            .toString()
-            .toLowerCase()
-            .includes(query.toLowerCase())
-        : false;
-      if (cond1 || cond2) {
-        return true;
-      }
-      return false;
-    });
+    if (Array.isArray(books) === true) {
+      showingBooks = books.filter(c => {
+        var cond1 = c.title
+          ? c.title.toLowerCase().includes(query.toLowerCase())
+          : false;
+        var cond2 = c.authors
+          ? c.authors
+              .toString()
+              .toLowerCase()
+              .includes(query.toLowerCase())
+          : false;
+        if (cond1 || cond2) {
+          return true;
+        }
+        return false;
+      });
+    }
 
-    console.log(books);
+    console.log(showingBooks);
 
     return (
       <div>
@@ -82,8 +85,8 @@ export class ListBooks extends React.Component {
                     style={{
                       width: 128,
                       height: 188,
-                      backgroundImage: `url(${a.imageLinks.thumbnail})|| url(${
-                        a.imageLinks.smallThumbnail
+                      backgroundImage: `url(${
+                        a.imageLinks ? a.imageLinks.thumbnail : null
                       })`
                     }}
                   />

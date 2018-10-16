@@ -13,6 +13,11 @@ class BooksApp extends React.Component {
     Books: []
   };
 
+  constructor(props) {
+    super(props);
+    this.updateShelf = this.updateShelf.bind(this);
+  }
+
   componentDidMount() {
     BooksAPI.getAll().then(Books => {
       this.setState({
