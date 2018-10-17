@@ -37,7 +37,7 @@ export class WantToRead extends React.Component {
                     <select
                       value={this.state.value}
                       onChange={event => {
-                        this.props.updateShelf(a.id, event.target.value);
+                        this.props.updateShelf(a, event.target.value);
                       }}
                     >
                       <option value="move" disabled>

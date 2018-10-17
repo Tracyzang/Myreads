@@ -90,7 +90,7 @@ export class ListBooks extends React.Component {
                           : existingBooks.filter(e => e.id === a.id)[0].shelf
                       }
                       onChange={event => {
-                        this.props.updateShelf(a.id, event.target.value);
+                        this.props.updateShelf(a, event.target.value);
                       }}
                     >
                       <option value="move" disabled>
