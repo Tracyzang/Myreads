@@ -10,7 +10,9 @@ import { Route } from "react-router-dom";
 
 class BooksApp extends React.Component {
   state = {
-    Books: []
+    Books: [],
+    ID: "",
+    shelf: ""
   };
 
   constructor(props) {
@@ -27,10 +29,15 @@ class BooksApp extends React.Component {
   }
 
   updateShelf(book, shelf) {
-    BooksAPI.update(book, shelf).then();
+    BooksAPI.update(book, shelf).then((book, shelf) => {
+      this.setState({
+        Books: this.state.Books.filter(b => b.id !== book.id).concat([book])
+      });
+    });
   }
 
   render() {
+    console.log(this.state.Books);
     return (
       <div className="app">
         <div className="list-books">
@@ -46,6 +53,7 @@ class BooksApp extends React.Component {
                   <Reading
                     Books={this.state.Books}
                     updateShelf={this.updateShelf}
+                    ID={this.state.ID}
                   />
                   <WantToRead
                     Books={this.state.Books}

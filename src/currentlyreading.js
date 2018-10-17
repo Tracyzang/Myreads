@@ -6,7 +6,7 @@ export class Reading extends React.Component {
   };
 
   render() {
-    const { Books, updateShelf } = this.props;
+    const { Books } = this.props;
     const ReadingBooks = Books.filter(a => {
       return a.shelf === "currentlyReading";
     });
@@ -36,7 +36,6 @@ export class Reading extends React.Component {
                       value={this.state.value}
                       onChange={event => {
                         this.props.updateShelf(a.id, event.target.value);
-                        
                       }}
                     >
                       <option value="move" disabled>
