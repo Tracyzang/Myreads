@@ -6,7 +6,6 @@ export class Read extends React.Component {
   };
 
   render() {
-    console.log(this.state.value);
     const { Books } = this.props;
     const readBooks = Books.filter(a => {
       return a.shelf === "read";
@@ -25,7 +24,9 @@ export class Read extends React.Component {
                       style={{
                         width: 128,
                         height: 188,
-                        backgroundImage: `url(${a.imageLinks.thumbnail})`
+                        backgroundImage: `url(${
+                          a.imageLinks ? a.imageLinks.thumbnail : null
+                        })`
                       }}
                     />
                   </div>

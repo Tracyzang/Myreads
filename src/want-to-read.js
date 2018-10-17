@@ -1,12 +1,9 @@
 import React from "react";
 
-
 export class WantToRead extends React.Component {
   state = {
     value: "wantToRead"
   };
-
-
 
   render() {
     const { Books } = this.props;
@@ -28,29 +25,32 @@ export class WantToRead extends React.Component {
                       style={{
                         width: 128,
                         height: 188,
-                        backgroundImage: `url(${a.imageLinks.thumbnail})`
+                        backgroundImage: `url(${
+                          a.imageLinks ? a.imageLinks.thumbnail : null
+                        })`
                       }}
                     />
                   </div>
                   <p className="book-title">{a.title}</p>
                   <p className="book-authors">{a.authors}</p>
                   <div className="book-shelf-changer">
-                  <select
-                    value={this.state.value}
-                    onChange={event => {
-                      this.props.updateShelf(a.id, event.target.value);
-                    
-                    }}
-                  >
-                    <option value="move" disabled>
-                      Move to...
-                    </option>
-                    <option value="currentlyReading">Currently Reading</option>
-                    <option value="wantToRead">Want to Read</option>
-                    <option value="read">Read</option>
-                    <option value="none">None</option>
-                  </select>
-                </div>
+                    <select
+                      value={this.state.value}
+                      onChange={event => {
+                        this.props.updateShelf(a.id, event.target.value);
+                      }}
+                    >
+                      <option value="move" disabled>
+                        Move to...
+                      </option>
+                      <option value="currentlyReading">
+                        Currently Reading
+                      </option>
+                      <option value="wantToRead">Want to Read</option>
+                      <option value="read">Read</option>
+                      <option value="none">None</option>
+                    </select>
+                  </div>
                 </li>
               ))}
             </div>
